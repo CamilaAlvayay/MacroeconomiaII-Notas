@@ -1,0 +1,539 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.5cm}
+\pgfplotsset{compat=1.18}
+
+% --- Definiciones ---
+\newcommand{\barvar}[1]{\overline{#1}}
+
+\newtcolorbox{definicionbox}[1][]{colback=yellow!10, colframe=red!70!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{resultadobox}[1][]{colback=yellow!10, colframe=red!80!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{explicacionbox}[1][]{colback=red!5, colframe=red!60!black, title=#1, fonttitle=\bfseries}
+
+% --- Documento ---
+\title{\textbf{Clase 2: Aspa Keynesiana} \\ \large Macroeconomía II}
+\author{Universidad Católica del Norte}
+\date{24 de agosto, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Notación Matemática}
+% ============================================================
+
+Durante el curso utilizaremos la siguiente tipología de variables.
+
+\subsection{Tipos de Variables}
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Variables Endógenas:} Son determinadas \emph{dentro} del modelo.
+    \begin{itemize}
+        \item Ejemplo: En el Aspa Keynesiana serían $Y$ (ingreso) y $DA$ (demanda agregada).
+        \item Notación: letra mayúscula. Ej: $Y$.
+    \end{itemize}
+
+    \item \textbf{Variables Exógenas:} Son determinadas \emph{fuera} del modelo.
+    \begin{itemize}
+        \item Ejemplo: Transferencias ($\barvar{Tr}$).
+        \item Notación: letra mayúscula con una barra encima. Ej: $\barvar{Tr}$.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Parámetros y Funciones}
+
+\textbf{Parámetros:} Valores fijos que determinan la relación entre dos variables.
+\begin{itemize}
+    \item Notación: letra minúscula. Ej: $c$.
+\end{itemize}
+
+\textbf{Función:} Relación entre dos variables.
+\begin{itemize}
+    \item Notación: $I = I(r)$, donde el signo ``$=$'' se lee como ``igual'' (identidad funcional).
+\end{itemize}
+
+% ============================================================
+\section{Aspa Keynesiana}
+% ============================================================
+
+\begin{itemize}
+    \item Modelo simplificado.
+    \item Nace para entender el \textbf{Mercado de Bienes y Servicios}.
+    \item Supuestos:
+    \begin{enumerate}
+        \item Precios fijos.
+        \item Economía cerrada.
+        \item Corto plazo.
+        \item Con Gobierno.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Demanda Agregada}
+
+\begin{definicionbox}[Demanda Agregada]
+Valor total de todos los bienes y servicios que se \textbf{planean demandar} en la economía.
+\end{definicionbox}
+
+\subsubsection{Tipos de Bienes y Servicios que se demandan}
+
+\paragraph{1) Consumo (C)}
+Bienes y servicios demandados por los hogares.
+\begin{itemize}
+    \item \textbf{Bienes Duraderos:} Bienes que pueden ser utilizados durante un largo período. Ej: Auto.
+    \item \textbf{Bienes No Duraderos:} Bienes que se consumen rápidamente. Ej: Comida.
+    \item \textbf{Servicios:} No son bienes físicos pero son consumidos. Ej: Salud, Educación, Entretención, etc.
+\end{itemize}
+
+\paragraph{2) Inversión (I) --- Formación Bruta de Capital Fijo}
+Demanda por bienes de capital. Los bienes de capital son insumos de producción que permiten generar mayor producción.
+\begin{itemize}
+    \item Ej: Una excavadora para una empresa constructora.
+    \item Ej: Una impresora para una empresa editorial.
+    \item Ej: Computadores para una empresa de servicios.
+    \item \textbf{Construcciones:} Construcciones de nuevas fábricas, oficinas y tiendas.
+    \item \textbf{Inventarios o Existencias:} Bienes que serán vendidos más adelante.
+    \item \textbf{Inversión Pública:} Bienes de capital que demanda el Gobierno.
+\end{itemize}
+
+\paragraph{3) Gobierno (G)}
+Bienes y servicios demandados por el Gobierno.
+\begin{itemize}
+    \item Salarios de los trabajadores del sector público.
+    \item Administración.
+    \item Servicios Públicos (Salud, Educación Pública, etc.).
+\end{itemize}
+
+% ============================================================
+\subsection{Condición de Equilibrio del Mercado de Bienes y Servicios}
+% ============================================================
+
+\begin{resultadobox}[Condición de Equilibrio]
+\begin{equation}
+    DA = Y \tag{1}
+\end{equation}
+donde:
+\begin{itemize}
+    \item $DA$: Demanda Planeada (también llamada ``Gasto Planeado'' o ``Función de Demanda Agregada'').
+    \item $Y$: Demanda Efectiva (también llamada ``Gasto Efectivo'').
+\end{itemize}
+\end{resultadobox}
+
+Esta condición establece que el Mercado de Bienes y Servicios está en equilibrio cuando el volumen producido es igual a la cantidad demandada.
+
+\subsubsection{Gasto Efectivo ($Y$)}
+
+\begin{itemize}
+    \item Gasto total efectivo de la economía.
+    \item En Macroeconomía I aprendimos, por Contabilidad Nacional, que esto se puede medir de 3 formas:
+    \begin{enumerate}
+        \item \textbf{Método del Gasto Final:} $Y = C + I + G + XN$
+        \item \textbf{Método del Valor Agregado.}
+        \item \textbf{Método del Ingreso:} Suma de todos los ingresos (salarios, etc.) de la economía.
+    \end{enumerate}
+    \item La producción se mide a través del indicador PIB (Producto Interno Bruto).
+    \item El gasto efectivo se mide por medio de la producción total de bienes y servicios de una economía en un año, usualmente a través del PIB.
+\end{itemize}
+
+\begin{tcolorbox}[colback=blue!5, colframe=blue!60!black]
+Por lo tanto: $Y \Rightarrow$ Producción, Gasto Efectivo, Ingreso.
+\end{tcolorbox}
+
+\subsubsection{Gasto Planeado o Demanda Agregada ($DA$)}
+
+Es lo que planean los hogares, las empresas y el Gobierno demandar a la economía, en términos de Bienes y Servicios, en un año.
+
+$DA$ es una función, ya que lo que se planea demandar depende de varios factores.
+
+\begin{resultadobox}[Esquema de Demanda Agregada]
+\begin{equation}
+    DA = C + I + G \tag{2}
+\end{equation}
+donde $C$ = Consumo, $I$ = Inversión, $G$ = Gasto Gubernamental.
+\end{resultadobox}
+
+Ahora empezamos a ver todas las funciones que componen el esquema de Demanda Agregada.
+
+% ============================================================
+\section{Funciones del Modelo}
+% ============================================================
+
+\subsection{Función de Consumo ($C$)}
+
+Describe la relación entre consumo e ingreso:
+\[
+    C = f(Y)
+\]
+La relación entre consumo e ingreso es \textbf{positiva}. Escogemos la siguiente forma funcional:
+
+\begin{resultadobox}[Función de Consumo]
+\begin{equation}
+    C = \barvar{C} + c \, Y_d \tag{3}
+\end{equation}
+con $\barvar{C} > 0$ y $0 < c < 1$.
+\end{resultadobox}
+
+Donde:
+\begin{itemize}
+    \item $\barvar{C}$ = \textbf{Consumo Autónomo}, es decir, todos los factores que afectan el consumo pero que no son el ingreso. Es positivo ($\barvar{C} > 0$).
+    \item $c$ = \textbf{Propensión Marginal a Consumir}. Cambio en el consumo total por aumento de una unidad del Ingreso Disponible. $0 < c < 1$. Por ejemplo, $c = 0.8$ implica que la sociedad consume el 80\% del Ingreso Disponible.
+\end{itemize}
+
+\subsection{Ingreso Disponible ($Y_d$)}
+
+El ingreso disponible es igual al ingreso que le queda a los agentes de la economía una vez que le restan los impuestos y se le suma cualquier tipo de transferencia.
+
+\begin{resultadobox}[Ingreso Disponible]
+\begin{equation}
+    Y_d = Y - \barvar{T} + \barvar{Tr} \tag{4}
+\end{equation}
+\end{resultadobox}
+
+Donde:
+\begin{itemize}
+    \item $\barvar{T}$ = Impuesto suma fija.
+    \item $\barvar{Tr}$ = Transferencias (Ej: Bonos, etc.). Las transferencias son sumas de dinero otorgadas a las familias sin un trabajo productivo a cambio.
+\end{itemize}
+
+\subsubsection{Consumo en función de $Y$}
+
+Reemplazando (4) en (3):
+\begin{align}
+    C &= \barvar{C} + c\left(Y - \barvar{T} + \barvar{Tr}\right) \notag \\
+    C &= \barvar{C} + cY - c\barvar{T} + c\barvar{Tr} \notag
+\end{align}
+
+\begin{resultadobox}[Función de Consumo en función de $Y$]
+\begin{equation}
+    C = \underbrace{\barvar{C}}_{\text{Endógena}} - \underbrace{c\barvar{T} + c\barvar{Tr}}_{\text{Exógenas}} + \underbrace{cY}_{\text{Endógena}} \tag{5}
+\end{equation}
+\end{resultadobox}
+
+\subsubsection{¿Cómo graficar la función de consumo?}
+
+\begin{enumerate}
+    \item \textbf{1\textsuperscript{er} Paso:} Identificar variables endógenas vs exógenas. Las variables endógenas serán los ejes del gráfico: $C$, $Y$.
+    \item \textbf{2\textsuperscript{do} Paso:} Identificar si la pendiente es positiva o negativa. La pendiente de la función de consumo es $c > 0$, positiva. Entre mayor ingreso existe, la gente más consume.
+    \item \textbf{3\textsuperscript{er} Paso:} Identificar los puntos de corte en los ejes.
+\end{enumerate}
+
+La función es $C = \barvar{C} - c\barvar{T} + c\barvar{Tr} + cY$.
+
+\begin{itemize}
+    \item Si $Y = 0$: $C = \barvar{C} - c\barvar{T} + c\barvar{Tr} > 0$ (positivo).
+    \item Si $C = 0$: $Y = -\dfrac{\barvar{C} - c\barvar{T} + c\barvar{Tr}}{c}$ (negativo).
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$C$},
+        xmin=-3, xmax=8, ymin=-1, ymax=6,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=10cm, height=7cm,
+    ]
+    % Función de consumo
+    \addplot[domain=-2:7, thick, violet] {1.5 + 0.6*x};
+    \node[right, violet] at (axis cs:5.5,5) {$C = \barvar{C} - c\barvar{T} + c\barvar{Tr} + cY$};
+
+    % Interceptos
+    \node[left, teal] at (axis cs:0,1.5) {$\barvar{C} - c\barvar{T} + c\barvar{Tr}$};
+    \node[below] at (axis cs:-2.5,0) {$-\frac{\barvar{C} - c\barvar{T} + c\barvar{Tr}}{c}$};
+
+    % Pendiente
+    \node[below right, violet] at (axis cs:2,2.7) {Pendiente $= c$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Consumo y Ahorro}
+
+¿Qué ocurre con $(1-c)$? Es la parte del Ingreso Disponible que no se consume. Si no se gasta, se ahorra.
+
+\begin{resultadobox}[Restricción Presupuestaria]
+\begin{equation}
+    S = Y - C \tag{6}
+\end{equation}
+donde $S$ = Ahorro.
+\end{resultadobox}
+
+Sustituyendo (5) en (6):
+\begin{align}
+    S &= Y - \left(\barvar{C} - c\barvar{T} + c\barvar{Tr} + cY\right) \notag \\
+    S &= Y - \barvar{C} + c\barvar{T} - c\barvar{Tr} - cY \notag \\
+    S &= -\barvar{C} + c\barvar{T} - c\barvar{Tr} + \underbrace{(1-c)}_{s}Y \notag
+\end{align}
+
+donde $s = (1-c)$ es la \textbf{propensión marginal a ahorrar}.
+
+\subsection{Inversión ($I$)}
+
+Por el momento asumiremos que la inversión es exógena:
+
+\begin{resultadobox}[Inversión]
+\begin{equation}
+    I = \barvar{I} \tag{7}
+\end{equation}
+\end{resultadobox}
+
+\subsection{Gasto Gubernamental ($G$)}
+
+Se asume que el gasto de gobierno es exógeno:
+
+\begin{resultadobox}[Gasto Gubernamental]
+\begin{equation}
+    G = \barvar{G} \tag{8}
+\end{equation}
+\end{resultadobox}
+
+% ============================================================
+\section{Función de Demanda Agregada}
+% ============================================================
+
+Para calcular la función de Demanda Agregada, sustituimos (5), (7), y (8) en (2):
+\begin{align}
+    DA &= C + I + G \notag \\
+    DA &= \underbrace{\barvar{C} - c\barvar{T} + c\barvar{Tr} + \barvar{I} + \barvar{G}}_{\text{Variables Exógenas}} + \underbrace{cY}_{\text{Variable Endógena}} \notag
+\end{align}
+
+Todas las variables exógenas se pueden agrupar en un solo término que denominamos \textbf{Gasto Autónomo}:
+
+\begin{resultadobox}[Función de Demanda Agregada]
+\begin{equation}
+    DA = \barvar{A}_0 + cY \tag{9}
+\end{equation}
+donde:
+\[
+    \barvar{A}_0 = \barvar{C} - c\barvar{T} + c\barvar{Tr} + \barvar{I} + \barvar{G}
+\]
+\end{resultadobox}
+
+La \textbf{Función de Demanda Agregada} describe la relación entre el ingreso total de una economía y la demanda agregada.
+
+% ============================================================
+\section{Determinación de la Producción de Equilibrio}
+% ============================================================
+
+El nivel de producción en el cual una economía está en equilibrio se encuentra cuando el Gasto Efectivo es igual al Gasto Planeado:
+\begin{align}
+    DA &= Y \quad \rightarrow \text{Ecuación (1)} \notag \\
+    DA &= \barvar{A}_0 + cY \quad \rightarrow \text{Ecuación (9)} \notag
+\end{align}
+
+Reemplazamos (9) en (1):
+\begin{align}
+    \barvar{A}_0 + cY &= Y \notag \\
+    Y - cY &= \barvar{A}_0 \notag \\
+    (1-c)Y &= \barvar{A}_0 \notag
+\end{align}
+
+\begin{resultadobox}[Nivel de Producción de Equilibrio]
+\begin{equation}
+    Y^* = \frac{\barvar{A}_0}{1 - c}
+\end{equation}
+\end{resultadobox}
+
+\subsection{Gráfico del Aspa Keynesiana}
+
+Para graficar:
+\begin{enumerate}
+    \item \textbf{Variables endógenas:} $DA = Y \Rightarrow DA, Y$; \quad $DA = \barvar{A}_0 + cY \Rightarrow DA, Y$.
+    \item \textbf{Pendiente:} $c > 0$ (positiva).
+    \item \textbf{Puntos de corte:}
+    \begin{itemize}
+        \item Si $Y=0$: $DA = \barvar{A}_0$.
+        \item Si $DA = 0$: $Y = -\barvar{A}_0 / c$.
+    \end{itemize}
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=10, ymin=-1, ymax=10,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=9cm,
+    ]
+    % Línea de 45 grados (DA = Y)
+    \addplot[domain=0:9, thick, blue] {x};
+    \node[above left, blue] at (axis cs:8.5,8.5) {$DA = Y$};
+
+    % Función DA = Ao + cY (con c = 0.6 y Ao = 2)
+    \addplot[domain=0:9, thick, red!70!black] {2 + 0.6*x};
+    \node[right, red!70!black] at (axis cs:7.5,6.5) {$DA = \barvar{A}_0 + cY$};
+
+    % Punto de equilibrio E
+    \addplot[only marks, mark=*, mark size=3pt, red!70!black] coordinates {(5, 5)};
+    \node[above left] at (axis cs:5,5) {$E$};
+
+    % Líneas punteadas al equilibrio
+    \addplot[dashed, gray] coordinates {(5,0) (5,5)};
+    \addplot[dashed, gray] coordinates {(0,5) (5,5)};
+
+    % Etiquetas
+    \node[left] at (axis cs:0,2) {$\barvar{A}_0$};
+    \node[left] at (axis cs:0,5) {$DA^* = \dfrac{\barvar{A}_0}{1-c}$};
+    \node[below] at (axis cs:5,0) {$Y^* = \dfrac{\barvar{A}_0}{1-c}$};
+
+    % Pendiente label
+    \node[below right, red!70!black] at (axis cs:6.5,5.8) {Pendiente $= c$};
+
+    % Ángulo de 45 grados
+    \draw[blue, thick] (axis cs:1.2,0) arc[start angle=0, end angle=45, radius=1cm];
+    \node[above right, blue] at (axis cs:1.3,0.3) {$45°$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\subsection{Estática Comparativa: ¿Qué ocurre si aumenta $c$?}
+% ============================================================
+
+Si la propensión marginal a consumir aumenta (por ejemplo, de $c_1 = 0.6$ a $c_2 = 0.8$), la sociedad se vuelve más consumista. ¿Qué ocurre con la producción de equilibrio?
+
+\[
+    Y_1^* = \frac{\barvar{A}_0}{1-c_1} \quad \longrightarrow \quad Y_2^* = \frac{\barvar{A}_0}{1-c_2}
+\]
+
+Como $c_2 > c_1$, entonces $(1-c_2) < (1-c_1)$, por lo que $Y_2^* > Y_1^*$.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=12, ymin=-1, ymax=12,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=9cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:11, thick, blue] {x};
+    \node[above left, blue] at (axis cs:10,10) {$DA = Y$};
+
+    % DA con c1
+    \addplot[domain=0:11, thick, orange] {2 + 0.6*x};
+    \node[right, orange] at (axis cs:9,7.4) {$DA = \barvar{A}_0 + c_1 Y$};
+
+    % DA con c2 (pivote desde Ao)
+    \addplot[domain=0:11, thick, red] {2 + 0.8*x};
+    \node[right, red] at (axis cs:8.5,8.8) {$DA = \barvar{A}_0 + c_2 Y$};
+
+    % Equilibrio E1
+    \addplot[only marks, mark=*, mark size=3pt, violet] coordinates {(5, 5)};
+    \node[below left, violet] at (axis cs:5,5) {$E_1$};
+
+    % Equilibrio E2
+    \addplot[only marks, mark=*, mark size=3pt, red] coordinates {(10, 10)};
+    \node[above left, red] at (axis cs:10,10) {$E_2$};
+
+    % Líneas punteadas
+    \addplot[dashed, violet] coordinates {(5,0) (5,5)};
+    \addplot[dashed, red] coordinates {(10,0) (10,10)};
+
+    % Etiquetas en eje X
+    \node[below, violet] at (axis cs:5,0) {$Y_1^*$};
+    \node[below, red] at (axis cs:10,0) {$Y_2^*$};
+
+    % Flecha de pivote
+    \draw[->, thick, gray, dashed] (axis cs:7,6.2) to[bend left=20] (axis cs:7,7.6);
+    \node[right, gray] at (axis cs:7.2,6.9) {Pivote};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{explicacionbox}[Explicación]
+Si la sociedad comienza a consumir más, la demanda agregada aumenta ($\uparrow DA$). La producción responde disminuyendo inventarios y contratando a trabajadores para alcanzar la nueva demanda ($\uparrow Y$). Esto genera un nuevo aumento en el ingreso y por ende en el consumo ($\uparrow C$) y la $DA$ ($\uparrow DA$), hasta que eventualmente se llega a un nuevo equilibrio.
+\end{explicacionbox}
+
+% ============================================================
+\subsection{Estática Comparativa: ¿Qué ocurre si aumenta $\barvar{A}_0$?}
+% ============================================================
+
+Pensar en las razones por las cuales $\barvar{A}_0$ podría aumentar (aumento en $\barvar{G}$, $\barvar{I}$, $\barvar{C}$, $\barvar{Tr}$, o disminución de $\barvar{T}$).
+
+Si $\barvar{A}_0^1 < \barvar{A}_0^2$:
+
+\[
+    Y_1^* = \frac{\barvar{A}_0^1}{1-c} \quad \longrightarrow \quad Y_2^* = \frac{\barvar{A}_0^2}{1-c}
+\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=12, ymin=-1, ymax=12,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=9cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:11, thick, blue] {x};
+    \node[above left, blue] at (axis cs:10,10) {$DA = Y$};
+
+    % DA con Ao1
+    \addplot[domain=0:11, thick, orange] {2 + 0.6*x};
+    \node[right, orange] at (axis cs:9,7.4) {$DA = \barvar{A}_0^1 + cY$};
+
+    % DA con Ao2 (desplazamiento paralelo)
+    \addplot[domain=0:11, thick, red] {4 + 0.6*x};
+    \node[right, red] at (axis cs:8,8.8) {$DA = \barvar{A}_0^2 + cY$};
+
+    % Equilibrio E1
+    \addplot[only marks, mark=*, mark size=3pt, violet] coordinates {(5, 5)};
+    \node[below left, violet] at (axis cs:5,5) {$E_1$};
+
+    % Equilibrio E2
+    \addplot[only marks, mark=*, mark size=3pt, orange!80!red] coordinates {(10, 10)};
+    \node[above left, orange!80!red] at (axis cs:10,10) {$E_2$};
+
+    % Líneas punteadas
+    \addplot[dashed, violet] coordinates {(5,0) (5,5)};
+    \addplot[dashed, orange!80!red] coordinates {(10,0) (10,10)};
+
+    % Etiquetas
+    \node[left] at (axis cs:0,2) {$\barvar{A}_0^1$};
+    \node[left] at (axis cs:0,4) {$\barvar{A}_0^2$};
+    \node[below, violet] at (axis cs:5,0) {$Y_1^*$};
+    \node[below, orange!80!red] at (axis cs:10,0) {$Y_2^*$};
+
+    % Flecha de desplazamiento
+    \draw[->, thick, orange!70!red, dashed] (axis cs:3,3.8) -- (axis cs:3,5.8);
+    \node[right, orange!70!red] at (axis cs:3.1,4.8) {Desplazamiento};
+
+    % Recuadro
+    \node[draw=red, thick, fill=red!5, anchor=west] at (axis cs:8,4) {$\barvar{A}_0^1 < \barvar{A}_0^2$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Un aumento en el gasto autónomo produce un \textbf{desplazamiento paralelo} hacia arriba de la función de demanda agregada, generando un nuevo equilibrio con mayor producción.
+
+\end{document}
