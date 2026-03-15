@@ -1,0 +1,487 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.5cm}
+\pgfplotsset{compat=1.18}
+
+% --- Definiciones ---
+\newcommand{\barvar}[1]{\overline{#1}}
+
+\newtcolorbox{definicionbox}[1][]{colback=yellow!10, colframe=red!70!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{resultadobox}[1][]{colback=yellow!10, colframe=red!80!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{explicacionbox}[1][]{colback=red!5, colframe=red!60!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{puntosclavebox}[1][]{colback=yellow!10, colframe=green!50!black, title=#1, fonttitle=\bfseries}
+
+% --- Documento ---
+\title{\textbf{Clase 3: Multiplicador del Gasto, Política Fiscal y Curva IS} \\ \large Macroeconomía II}
+\author{Universidad Católica del Norte}
+\date{29 de agosto, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{El Multiplicador del Gasto}
+% ============================================================
+
+\begin{definicionbox}[Pregunta central]
+¿En cuánto aumenta el nivel de equilibrio de producción cuando existe un cambio exógeno en el gasto autónomo de una unidad monetaria?
+\end{definicionbox}
+
+\subsection{Derivación del Multiplicador}
+
+Consideremos las variaciones sucesivas en $Y$ cuando $\barvar{A}_0$ cambia:
+
+\begin{center}
+\begin{tabular}{lll}
+\textbf{Variación en $\Delta \barvar{A}_0$} & & \textbf{Variación en $\Delta Y$} \\
+\hline
+1\textsuperscript{a} Variación & $\rightarrow$ & $\Delta \barvar{A}_0$ \quad (cambio exógeno) \\
+2\textsuperscript{a} Variación & $\rightarrow$ & $c \cdot \Delta \barvar{A}_0$ \\
+3\textsuperscript{a} Variación & $\rightarrow$ & $c \cdot (c \cdot \Delta \barvar{A}_0) = c^2 \cdot \Delta \barvar{A}_0$ \\
+4\textsuperscript{a} Variación & $\rightarrow$ & $c^3 \cdot \Delta \barvar{A}_0$ \\
+\vdots & & \vdots \\
+\end{tabular}
+\end{center}
+
+¿Qué ocurre cuando aumenta $\barvar{A}_0$?
+\begin{align}
+\uparrow \barvar{A}_0 \;\Rightarrow\; &\uparrow DA \;(\Delta \barvar{A}_0) \;\Rightarrow\; \uparrow Y \;(\Delta \barvar{A}_0) \notag \\
+\Rightarrow\; &\uparrow Y_d \;(c\,\Delta \barvar{A}_0) \;\Rightarrow\; \uparrow C \;(c\,\Delta \barvar{A}_0) \notag \\
+\Rightarrow\; &\uparrow DA \;(c\,\Delta \barvar{A}_0) \;\Rightarrow\; \uparrow Y \;(c\,\Delta \barvar{A}_0) \notag \\
+&\quad \cdots \notag
+\end{align}
+
+La variación total en $Y$ es la suma de todas las variaciones:
+
+\begin{resultadobox}
+\[
+\Delta Y = \Delta \barvar{A}_0 + c\,\Delta \barvar{A}_0 + c^2\,\Delta \barvar{A}_0 + c^3\,\Delta \barvar{A}_0 + \cdots
+\]
+\end{resultadobox}
+
+Factorizamos $\Delta \barvar{A}_0$:
+\[
+\Delta Y = \Delta \barvar{A}_0 \left(1 + c + c^2 + c^3 + c^4 + \cdots \right)
+\]
+
+Dividiendo por $\Delta \barvar{A}_0$:
+\begin{equation}
+\frac{\Delta Y}{\Delta \barvar{A}_0} = 1 + c + c^2 + c^3 + c^4 + \cdots \tag{1}
+\end{equation}
+
+\begin{itemize}
+    \item El lado izquierdo representa: ¿cuánto varía $\Delta Y$ cuando $\Delta \barvar{A}_0$ varía en una unidad?
+    \item El lado derecho es una \textbf{suma infinita} (que se va haciendo cada vez más pequeña, ya que $0 < c < 1$).
+\end{itemize}
+
+\subsubsection{Resolución de la serie infinita}
+
+Multiplicamos la ecuación (1) por $(-c)$:
+\begin{equation}
+-c \cdot \frac{\Delta Y}{\Delta \barvar{A}_0} = -c - c^2 - c^3 - c^4 - c^5 - \cdots \tag{2}
+\end{equation}
+
+Sumamos $(1) + (2)$:
+\[
+\frac{\Delta Y}{\Delta \barvar{A}_0} - c \cdot \frac{\Delta Y}{\Delta \barvar{A}_0} = 1
+\]
+
+Factorizamos:
+\[
+(1 - c) \cdot \frac{\Delta Y}{\Delta \barvar{A}_0} = 1
+\]
+
+\begin{resultadobox}[Multiplicador del Gasto]
+\begin{equation}
+\frac{\Delta Y}{\Delta \barvar{A}_0} = \frac{1}{1-c} = \alpha_m \tag{3}
+\end{equation}
+donde $\alpha_m$ es el \textbf{Multiplicador del Gasto}.
+\end{resultadobox}
+
+\subsection{Interpretación del Multiplicador}
+
+\begin{definicionbox}[Definición del Multiplicador]
+El multiplicador ($\alpha_m$) es el monto en el cual cambia la producción de equilibrio cuando la demanda agregada autónoma aumenta en 1 unidad.
+\[
+\alpha_m = \frac{1}{1-c}
+\]
+\end{definicionbox}
+
+Dado que $0 < c < 1$:
+\[
+\frac{1}{1-c} > 1
+\]
+
+Es decir, el multiplicador es siempre \textbf{mayor que 1}. Si el gasto autónomo varía en $\Delta \barvar{A}_0$, la producción de equilibrio varía en:
+
+\begin{resultadobox}
+\[
+\Delta Y = \alpha_m \cdot \Delta \barvar{A}_0 = \frac{1}{1-c} \cdot \Delta \barvar{A}_0 \quad (> \Delta \barvar{A}_0)
+\]
+\end{resultadobox}
+
+\subsection{El Multiplicador en el gráfico}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=12, ymin=-1, ymax=12,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=9cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:11, thick, blue] {x};
+    \node[above left, blue] at (axis cs:10.5,10.5) {$DA = Y$};
+
+    % DA con Ao1
+    \addplot[domain=0:11, thick, red!70!black] {2 + 0.6*x};
+
+    % DA con Ao2
+    \addplot[domain=0:11, thick, red!70!black] {4 + 0.6*x};
+
+    % Equilibrios
+    \addplot[only marks, mark=*, mark size=3pt, teal] coordinates {(5, 5)};
+    \node[above left, teal] at (axis cs:5,5) {$E_1$};
+
+    \addplot[only marks, mark=*, mark size=3pt, teal] coordinates {(10, 10)};
+    \node[above left, teal] at (axis cs:10,10) {$E_2$};
+
+    % Líneas punteadas
+    \addplot[dashed, gray] coordinates {(5,0) (5,5)};
+    \addplot[dashed, gray] coordinates {(10,0) (10,10)};
+
+    % Delta Ao
+    \draw[->, thick, green!50!black] (axis cs:9.5,9.7) -- (axis cs:9.5,7.7);
+    \node[right, green!50!black] at (axis cs:9.6,8.7) {$\Delta \barvar{A}_0$};
+
+    % Delta Y
+    \draw[<->, thick, orange] (axis cs:5,-0.5) -- (axis cs:10,-0.5);
+    \node[below, orange] at (axis cs:7.5,-0.5) {$\Delta Y$};
+
+    % Etiquetas
+    \node[left] at (axis cs:0,2) {$\barvar{A}_0^1$};
+    \node[left] at (axis cs:0,4) {$\barvar{A}_0^2$};
+    \node[below] at (axis cs:5,0) {$Y_1$};
+    \node[below] at (axis cs:10,0) {$Y_2$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Si por alguna razón aumenta el gasto autónomo (por ejemplo $\uparrow \barvar{I}$), lo que produce un aumento en el ingreso, la gente gastará más, lo que aumentará aún más el ingreso vía el consumo.
+
+\begin{puntosclavebox}[Puntos Clave]
+\begin{itemize}
+    \item $\uparrow \barvar{A}_0 \;\Rightarrow\; \uparrow Y^*$
+    \item $\dfrac{\Delta Y}{\Delta \barvar{A}_0} = \alpha_m$
+    \item Entre mayor sea $c \;\Rightarrow\; \uparrow \alpha_m$
+\end{itemize}
+\end{puntosclavebox}
+
+% ============================================================
+\section{Determinación de la Producción de Equilibrio}
+% ============================================================
+
+¿Cómo alcanza la economía el equilibrio?
+
+\subsection{Caso 1: Exceso de Oferta ($Y > DA$)}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=12, ymin=-1, ymax=12,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=8cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:11, thick, blue] {x};
+    \node[above left, blue] at (axis cs:10,10) {$DA = Y$};
+
+    % DA
+    \addplot[domain=0:11, thick, red!70!black] {2 + 0.6*x};
+    \node[right, red!70!black] at (axis cs:9,7.4) {$DA = \barvar{A}_0 + cY$};
+
+    % Equilibrio
+    \addplot[only marks, mark=*, mark size=3pt, orange] coordinates {(5, 5)};
+    \node[above left, orange] at (axis cs:5,5) {$E$};
+    \node[above, orange] at (axis cs:5,5.5) {\small Equilibrio Estable};
+
+    % Punto Y1 > Y*
+    \addplot[only marks, mark=*, mark size=3pt, black] coordinates {(8, 8)};
+    \addplot[only marks, mark=*, mark size=3pt, black] coordinates {(8, 6.8)};
+
+    % Líneas punteadas Y1
+    \addplot[dashed, gray] coordinates {(8,0) (8,8)};
+
+    % Flechas de ajuste hacia equilibrio
+    \draw[->, thick, teal] (axis cs:7.8,7.5) -- (axis cs:6.5,6.5);
+    \draw[->, thick, teal] (axis cs:6.3,6.3) -- (axis cs:5.5,5.5);
+
+    % Etiquetas
+    \node[left] at (axis cs:0,2) {$\barvar{A}_0$};
+    \node[below] at (axis cs:5,0) {$Y^*$};
+    \node[below] at (axis cs:8,0) {$Y_1$};
+    \node[left] at (axis cs:7.3,5.5) {$\longleftarrow$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+En el punto $Y_1$ no estamos en equilibrio. La producción es mayor que la demanda agregada planeada: \textbf{Exceso de Oferta}.
+
+$Y > DA \;\Rightarrow$ Las empresas producen más de lo que la economía demanda:
+
+\begin{enumerate}
+    \item \textbf{Muy corto plazo:} $\uparrow$ Inventario ($IU > 0$)
+    \item $\Downarrow$ $\downarrow$ Contratación ($\downarrow L$)
+    \item $\Downarrow$ $\downarrow$ Ingreso ($\downarrow Y$)
+    \item $\Downarrow$ $\downarrow$ Demanda ($\downarrow DA$)
+    \item $\Downarrow$ $\downarrow Y \;\Rightarrow\; \downarrow DA \;\cdots$
+    \item $\Downarrow$ Ajuste (Equilibrio)
+\end{enumerate}
+
+\subsection{Caso 2: Exceso de Demanda ($Y < DA$)}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=12, ymin=-1, ymax=12,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=11cm, height=8cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:11, thick, blue] {x};
+    \node[above left, blue] at (axis cs:10,10) {$DA = Y$};
+
+    % DA
+    \addplot[domain=0:11, thick, red!70!black] {2 + 0.6*x};
+    \node[right, red!70!black] at (axis cs:9,7.4) {$DA = \barvar{A}_0 + cY$};
+
+    % Equilibrio
+    \addplot[only marks, mark=*, mark size=3pt, orange] coordinates {(5, 5)};
+    \node[above left, orange] at (axis cs:5,5) {$E$};
+    \node[above, orange] at (axis cs:5,5.5) {\small Equilibrio Estable};
+
+    % Punto Y2 < Y*
+    \addplot[only marks, mark=*, mark size=3pt, black] coordinates {(2, 2)};
+    \addplot[only marks, mark=*, mark size=3pt, black] coordinates {(2, 3.2)};
+
+    % Líneas punteadas Y2
+    \addplot[dashed, gray] coordinates {(2,0) (2,3.2)};
+
+    % Flechas de ajuste hacia equilibrio
+    \draw[->, thick, orange!80!red] (axis cs:2.5,2.8) -- (axis cs:3.5,3.8);
+    \draw[->, thick, orange!80!red] (axis cs:3.7,4.0) -- (axis cs:4.5,4.5);
+
+    % Etiquetas
+    \node[left] at (axis cs:0,2) {$\barvar{A}_0$};
+    \node[below] at (axis cs:5,0) {$Y^*$};
+    \node[below] at (axis cs:2,0) {$Y_2$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+En el punto $Y_2$ no estamos en equilibrio. La producción es menor que la demanda agregada planeada: \textbf{Exceso de Demanda}.
+
+$Y < DA \;\Rightarrow$ Las empresas producen menos de lo que la economía demanda:
+
+\begin{enumerate}
+    \item \textbf{Muy corto plazo:} $\downarrow$ Inventario ($IU < 0$)
+    \item $\Downarrow$ $\uparrow$ Contratación ($\uparrow L$)
+    \item $\Downarrow$ $\uparrow$ Ingreso ($\uparrow Y$)
+    \item $\Downarrow$ $\uparrow$ Demanda ($\uparrow DA$)
+    \item $\Downarrow$ $\uparrow Y \;\Rightarrow\; \uparrow DA \;\cdots$
+    \item $\Downarrow$ Ajuste (Equilibrio)
+\end{enumerate}
+
+% ============================================================
+\section{Sector Gubernamental y Política Fiscal}
+% ============================================================
+
+\begin{definicionbox}[Preguntas centrales]
+¿Cómo puede hacer el gobierno para aumentar la producción de equilibrio? ¿Qué herramientas tiene el gobierno para alterar el crecimiento?
+\end{definicionbox}
+
+\textbf{Política Fiscal:} Herramientas que posee el gobierno para cambiar el curso del crecimiento económico en el corto plazo.
+
+Las herramientas de la política fiscal son:
+
+\begin{center}
+\begin{tikzpicture}
+    \node[draw, thick, red!70!black, fill=red!5, minimum width=5cm, minimum height=1cm] (PF) at (0,0) {\textbf{POLÍTICA FISCAL}};
+
+    \node[below left=1.5cm and 2cm of PF] (G) {$\barvar{G}$};
+    \node[below=1.5cm of PF] (Tr) {$\barvar{Tr}$};
+    \node[below right=1.5cm and 2cm of PF] (t) {$t \cdot Y$};
+
+    \draw[->, thick, violet] (PF.south west) -- (G);
+    \draw[->, thick, violet] (PF.south) -- (Tr);
+    \draw[->, thick, violet] (PF.south east) -- (t);
+
+    \node[below=0.2cm of G, align=center] {\small Gasto \\ \small Gubernamental};
+    \node[below=0.2cm of Tr, align=center] {\small Transferencias};
+    \node[below=0.2cm of t, align=center] {\small Impuesto \\ \small a la renta};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Impuesto a la Renta: Reescribiendo la función de Consumo}
+
+Ahora introducimos un \textbf{impuesto proporcional a la renta} ($t \cdot Y$) en lugar del impuesto de suma fija ($\barvar{T}$).
+
+La función de consumo es:
+\[
+C = \barvar{C} + c \, Y_d
+\]
+
+El nuevo ingreso disponible es:
+\[
+Y_d = Y + \barvar{Tr} - t \cdot Y = (1-t)Y + \barvar{Tr}
+\]
+
+Sustituyendo:
+\begin{align}
+C &= \barvar{C} + c\left(Y + \barvar{Tr} - tY\right) \notag \\
+C &= \barvar{C} + cY + c\barvar{Tr} - ctY \notag
+\end{align}
+
+\begin{resultadobox}[Nueva Función de Consumo]
+\begin{equation}
+C = \barvar{C} + c\barvar{Tr} + c(1-t)Y \tag{4}
+\end{equation}
+donde $c(1-t)$ es la fracción del ingreso después de los impuestos que se destina al consumo.
+\end{resultadobox}
+
+\subsection{Nueva Función de Demanda Agregada}
+
+¿Cómo afecta esto a la Demanda Agregada? Recordando $DA = C + I + G$:
+\begin{align}
+DA &= \barvar{C} + c\barvar{Tr} + c(1-t)Y + \barvar{I} + \barvar{G} \notag
+\end{align}
+
+Reordenamos:
+\[
+DA = \underbrace{\barvar{C} + c\barvar{Tr} + \barvar{I} + \barvar{G}}_{\barvar{A}_0 \;\text{(Nuevo Gasto Autónomo)}} + c(1-t)Y
+\]
+
+\begin{resultadobox}[Nueva Función de Demanda Agregada]
+\begin{equation}
+DA = \barvar{A}_0 + c(1-t)Y \tag{5}
+\end{equation}
+donde:
+\begin{itemize}
+    \item $\barvar{A}_0 = \barvar{C} + c\barvar{Tr} + \barvar{I} + \barvar{G}$ es el \textbf{Gasto Autónomo}.
+    \item $c(1-t)$ es la nueva \textbf{Propensión Marginal a Consumir} (ajustada por impuestos).
+    \item $t$ es la \textbf{Tasa de Impuesto a la Renta}.
+\end{itemize}
+\end{resultadobox}
+
+\subsection{Nueva Producción de Equilibrio}
+
+Recordamos la condición de equilibrio:
+\begin{equation}
+DA = Y \tag{6}
+\end{equation}
+
+Reemplazamos (5) en (6):
+\begin{align}
+\barvar{A}_0 + c(1-t)Y &= Y \notag \\
+Y - c(1-t)Y &= \barvar{A}_0 \notag \\
+Y\left(1 - c(1-t)\right) &= \barvar{A}_0 \notag
+\end{align}
+
+\begin{resultadobox}[Nueva Producción de Equilibrio]
+\begin{equation}
+Y^* = \frac{\barvar{A}_0}{1 - c(1-t)}
+\end{equation}
+con el \textbf{Nuevo Multiplicador}:
+\[
+\alpha_m = \frac{1}{1 - c(1-t)}
+\]
+\end{resultadobox}
+
+\subsection{Comparación: Antes y Después del Impuesto a la Renta}
+
+\begin{center}
+\begin{tabular}{lcc}
+ & \textbf{Antes} (impuesto suma fija) & \textbf{Ahora} (impuesto a la renta) \\
+\hline
+$\barvar{A}_0$ & $\barvar{C} - c\barvar{T} + c\barvar{Tr} + \barvar{I} + \barvar{G}$ & $\barvar{C} + c\barvar{Tr} + \barvar{I} + \barvar{G}$ \\[8pt]
+Pendiente DA & $c$ & $c(1-t)$ \\[8pt]
+Multiplicador & $\dfrac{1}{1-c}$ & $\dfrac{1}{1-c(1-t)}$ \\[8pt]
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$DA$},
+        xmin=-1, xmax=14, ymin=-1, ymax=14,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=12cm, height=9cm,
+    ]
+    % Línea de 45 grados
+    \addplot[domain=0:13, thick, blue] {x};
+    \node[above left, blue] at (axis cs:12,12) {$DA = Y$};
+
+    % DA antes (pendiente c = 0.6, Ao mayor porque incluye -cT)
+    \addplot[domain=0:13, thick, green!60!black] {3 + 0.7*x};
+    \node[right, green!60!black] at (axis cs:10,10) {$DA = \barvar{A}_0 + cY$ (Antes)};
+
+    % DA ahora (pendiente c(1-t) = 0.6*0.7 = 0.42, Ao sin cT)
+    \addplot[domain=0:13, thick, red!70!black] {2.5 + 0.5*x};
+    \node[right, red!70!black] at (axis cs:10.5,7.7) {$DA = \barvar{A}_0 + c(1\!-\!t)Y$ (Ahora)};
+
+    % Equilibrios
+    \addplot[only marks, mark=*, mark size=3pt, green!50!black] coordinates {(10, 10)};
+    \addplot[only marks, mark=*, mark size=3pt, red!60!black] coordinates {(5, 5)};
+
+    % Líneas punteadas
+    \addplot[dashed, gray] coordinates {(10,0) (10,10)};
+    \addplot[dashed, gray] coordinates {(5,0) (5,5)};
+
+    % Etiquetas
+    \node[left] at (axis cs:0,3) {$\barvar{A}_0$};
+    \node[left] at (axis cs:0,2.5) {$\barvar{A}_0'$};
+    \node[below, red!60!black] at (axis cs:5,0) {$Y^*{}'$};
+    \node[below, green!50!black] at (axis cs:10,0) {$Y^*$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{explicacionbox}[Conclusión]
+El impuesto a la renta \textbf{aminora el multiplicador}. La pendiente de la función de demanda agregada pasa de $c$ a $c(1-t) < c$, lo que reduce el efecto multiplicador sobre la producción de equilibrio. El multiplicador pasa de $\frac{1}{1-c}$ a $\frac{1}{1-c(1-t)} < \frac{1}{1-c}$.
+\end{explicacionbox}
+
+\end{document}
