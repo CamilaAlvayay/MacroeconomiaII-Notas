@@ -1,0 +1,394 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\geometry{margin=2.5cm}
+\pgfplotsset{compat=1.18}
+
+% --- Definiciones ---
+\newcommand{\barvar}[1]{\overline{#1}}
+
+\newtcolorbox{definicionbox}[1][]{colback=yellow!10, colframe=red!70!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{resultadobox}[1][]{colback=yellow!10, colframe=red!80!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{explicacionbox}[1][]{colback=red!5, colframe=red!60!black, title=#1, fonttitle=\bfseries}
+\newtcolorbox{notabox}[1][]{colback=pink!10, colframe=red!50!black, title=#1, fonttitle=\bfseries}
+
+% --- Documento ---
+\title{\textbf{Clase 5: Teoría de la Preferencia por la Liquidez y Equilibrio IS-LM} \\ \large Macroeconomía II}
+\author{Universidad Católica del Norte}
+\date{07 de septiembre, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Teoría de la Preferencia por la Liquidez}
+% ============================================================
+
+\begin{definicionbox}[Curva LM]
+La Curva LM muestra la relación entre el tipo de interés y el nivel de producción donde el \textbf{mercado del dinero} está en equilibrio. Todo empieza por la teoría de la preferencia por la liquidez.
+\end{definicionbox}
+
+\subsection{Nominal vs Real}
+
+\begin{notabox}[Demanda Nominal vs Real de Dinero]
+\textbf{Demanda Nominal de Dinero:} Demanda que hace un individuo de cierta suma de dinero.
+
+\textbf{Demanda Real de Dinero:} Se expresa en términos del poder adquisitivo del dinero, es decir, el número de unidades de bienes que compra el dinero.
+\end{notabox}
+
+\subsubsection{Ejemplo}
+
+Demanda por dinero nominal $= \$100.000$
+
+Para calcular la demanda real, necesitamos el nivel de precios. Usamos el \textbf{Índice de Precios al Consumidor (IPC)}, que mide el costo promedio de una canasta de bienes y servicios representativa de una familia promedio.
+
+\begin{itemize}
+    \item IPC Julio 2023 $\rightarrow$ 132,20 puntos del IPC (Base = 100, año 2018).
+    \item Nivel de Precios en términos relativos: $\dfrac{132{,}20}{100} = 1{,}322$
+\end{itemize}
+
+\[
+\text{Demanda Real de Dinero} = \frac{\text{Demanda Nominal}}{\text{Nivel de Precios}} = \frac{\$100.000}{1{,}322} = \$75.962{,}96
+\]
+
+Interpretación: ¿Cuánto hubieras necesitado en 2018 para tener el mismo poder adquisitivo que esos \$100.000 pesos tienen en 2023? Respuesta: \$75.963. Lo que antes podías comprar con 76 mil pesos, ahora te cuesta \$100.000.
+
+\subsection{Saldos de Dinero Real}
+
+\begin{definicionbox}[Saldos de Dinero Real]
+Los \textbf{saldos de dinero real} (o saldos reales) son la cantidad de dinero nominal dividida entre el nivel de precios. La demanda real del dinero se llama \textbf{Demanda por Saldos Reales}.
+\end{definicionbox}
+
+Cuanto más alto es el nivel de precios, más saldos nominales debe tener una persona para mantener el poder adquisitivo.
+
+\subsection{Demanda por Saldos Reales}
+
+La demanda por saldos reales depende de:
+\begin{itemize}
+    \item El \textbf{nivel de ingreso} ($Y$).
+    \item La \textbf{tasa de interés} ($r$).
+\end{itemize}
+
+\subsubsection{Relación con la tasa de interés}
+
+El tipo de interés es el \textbf{costo de oportunidad} de tener dinero. El costo de conservar el dinero es la tasa de interés que se pierde por tener dinero en lugar de otros activos.
+
+\subsubsection{Relación con el nivel de ingreso}
+
+Cuando la renta es alta, el gasto es elevado, por lo que la gente realiza más transacciones que exigen el uso del dinero. Esto viene de la \textbf{Teoría Cuantitativa del Dinero}:
+
+\[
+\underbrace{M}_{\text{Dinero}} \times \underbrace{V}_{\text{Velocidad}} = \underbrace{P}_{\text{Precio}} \times \underbrace{T}_{\text{Transacciones}}
+\]
+
+Ejemplo: $M = 100$ mil millones de pesos, $T = 400$ mil millones de transacciones, $P = 1{,}25$, $V = 5$ (cantidad de veces que debe cambiar de mano el dinero).
+
+De aquí: $M \cdot V = P \cdot Y$, entonces $M = \dfrac{\barvar{P} \cdot Y}{\barvar{V}}$. Si $\uparrow Y \Rightarrow \uparrow M$.
+
+\subsection{Forma Funcional de la Demanda por Saldos Reales}
+
+\begin{resultadobox}[Función de Demanda por Saldos Reales]
+\begin{equation}
+    \left(\frac{M}{P}\right)^d = k \cdot Y - h \cdot r \tag{1}
+\end{equation}
+con $k, h > 0$.
+\end{resultadobox}
+
+Donde:
+\begin{itemize}
+    \item $k$ = Sensibilidad de la demanda por saldos reales al nivel de ingresos.
+    \item $h$ = Sensibilidad de la demanda por saldos reales a la tasa de interés.
+\end{itemize}
+
+\subsubsection{Gráfico de la Demanda por Saldos Reales}
+
+Puntos de corte: Si $r = 0$: $\left(\frac{M}{P}\right)^d = k \cdot Y$. Si $\left(\frac{M}{P}\right)^d = 0$: $r = \frac{k \cdot Y}{h}$.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$\frac{M}{P}$}, ylabel={$r$},
+        xmin=-0.5, xmax=8, ymin=-0.5, ymax=6,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=10cm, height=7cm,
+    ]
+    % Demanda por saldos reales para Y1
+    \addplot[domain=0:5, thick, violet] {4 - 0.8*x};
+    \node[below, violet] at (axis cs:5,0) {$k \cdot Y_1$};
+    \node[left, violet] at (axis cs:0,4) {$\frac{k \cdot Y_1}{h}$};
+
+    % Demanda para Y2 > Y1 (desplazada a la derecha)
+    \addplot[domain=0:7, thick, red!70!black] {5.6 - 0.8*x};
+    \node[below, red!70!black] at (axis cs:7,0) {$k \cdot Y_2$};
+
+    % Flecha indicando aumento de Y
+    \draw[->, thick, orange] (axis cs:3.5,1.5) -- (axis cs:5,1.5);
+    \node[above, orange] at (axis cs:4.2,1.5) {$\uparrow Y$ ($Y_1 \to Y_2$)};
+
+    % Tasa de interés fija
+    \addplot[dashed, blue] coordinates {(0,2) (7,2)};
+    \node[left, blue] at (axis cs:0,2) {$r$};
+
+    % Intersecciones
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(2.5,2)};
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(4.5,2)};
+    \addplot[dashed, blue!50] coordinates {(2.5,0) (2.5,2)};
+    \addplot[dashed, blue!50] coordinates {(4.5,0) (4.5,2)};
+    \node[below, blue] at (axis cs:2.5,0) {$Y_1$};
+    \node[below, blue] at (axis cs:4.5,0) {$Y_2$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\subsection{Oferta Monetaria}
+% ============================================================
+
+La oferta monetaria en Chile se clasifica en:
+\begin{itemize}
+    \item \textbf{M1:} Billetes, monedas en circulación, depósitos a la vista.
+    \item \textbf{M2:} M1 + Depósitos a corto y mediano plazo.
+    \item \textbf{M3:} M2 + Depósitos a largo plazo y otros activos líquidos.
+\end{itemize}
+
+¿Cómo influye el Banco Central de Chile (BCCh) en la oferta monetaria?
+\begin{enumerate}
+    \item Tasa de interés de referencia.
+    \item Compra y venta de títulos de deuda.
+    \item Regulación de la banca.
+\end{enumerate}
+
+\begin{resultadobox}[Oferta de Dinero]
+\begin{equation}
+    \left(\frac{M}{P}\right)^O = \frac{\barvar{M}}{\barvar{P}} \tag{2}
+\end{equation}
+La oferta de dinero real es exógena (fijada por el Banco Central).
+\end{resultadobox}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$M/P$}, ylabel={$r$},
+        xmin=-0.5, xmax=8, ymin=-0.5, ymax=6,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=8cm, height=6cm,
+    ]
+    % Oferta monetaria (vertical)
+    \addplot[thick, red!60!black] coordinates {(4,0) (4,5.5)};
+    \node[above, red!60!black] at (axis cs:4,5.5) {$\left(\frac{M}{P}\right)^O$};
+    \node[below] at (axis cs:4,0) {$\frac{\barvar{M}}{\barvar{P}}$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ============================================================
+\subsection{Equilibrio en el Mercado del Dinero}
+% ============================================================
+
+\begin{resultadobox}[Condición de Equilibrio del Mercado del Dinero]
+\begin{equation}
+    \left(\frac{M}{P}\right)^O = \left(\frac{M}{P}\right)^d \tag{3}
+\end{equation}
+Oferta = Demanda.
+\end{resultadobox}
+
+Reemplazando (1) y (2) en (3):
+\begin{align}
+    \frac{\barvar{M}}{\barvar{P}} &= k \cdot Y - h \cdot r \notag \\
+    h \cdot r &= k \cdot Y - \frac{\barvar{M}}{\barvar{P}} \notag
+\end{align}
+
+\begin{resultadobox}[Curva LM]
+\begin{equation}
+    r = \frac{1}{h}\left(k \cdot Y - \frac{\barvar{M}}{\barvar{P}}\right) \tag{4}
+\end{equation}
+\end{resultadobox}
+
+\begin{definicionbox}[Definición de la Curva LM]
+La Curva LM muestra todas las combinaciones de tasa de interés y nivel de ingreso en donde el mercado del dinero está en equilibrio.
+\end{definicionbox}
+
+\subsubsection{Gráfico: Del Mercado del Dinero a la Curva LM}
+
+\begin{center}
+\begin{tikzpicture}
+    % --- Mercado del Dinero (izquierda) ---
+    \begin{axis}[
+        name=dinero,
+        axis lines=middle,
+        xlabel={$M/P$}, ylabel={$r$},
+        xmin=-0.5, xmax=8, ymin=-0.5, ymax=6,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=7cm, height=6cm,
+        title={\small Mercado del Dinero},
+    ]
+    % Oferta
+    \addplot[thick, red!60!black] coordinates {(4,0) (4,5.5)};
+
+    % Demanda
+    \addplot[domain=0:5, thick, violet] {4 - 0.8*x};
+
+    % Equilibrio
+    \addplot[only marks, mark=*, mark size=3pt, teal] coordinates {(4,0.8)};
+    \addplot[dashed, gray] coordinates {(0,0.8) (4,0.8)};
+    \node[left] at (axis cs:0,0.8) {$r^*$};
+    \node[below] at (axis cs:4,0) {$\frac{\barvar{M}}{\barvar{P}}$};
+
+    \end{axis}
+
+    % --- Curva LM (derecha) ---
+    \begin{axis}[
+        at={(dinero.outer east)}, anchor=outer west, xshift=1.5cm,
+        axis lines=middle,
+        xlabel={$Y$}, ylabel={$r$},
+        xmin=-0.5, xmax=8, ymin=-0.5, ymax=6,
+        xtick=\empty, ytick=\empty,
+        every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+        every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+        width=7cm, height=6cm,
+        title={\small Curva LM},
+    ]
+    % Curva LM
+    \addplot[domain=1:7, thick, violet] {-1.5 + 0.8*x};
+    \node[above right, violet] at (axis cs:7,4.1) {$LM$};
+
+    % Punto de equilibrio
+    \addplot[only marks, mark=*, mark size=3pt, teal] coordinates {(5,2.5)};
+    \addplot[dashed, gray] coordinates {(0,2.5) (5,2.5)};
+    \addplot[dashed, gray] coordinates {(5,0) (5,2.5)};
+    \node[left] at (axis cs:0,2.5) {$r^*$};
+    \node[below] at (axis cs:5,0) {$Y_1$};
+    \node[below] at (axis cs:1.875,0) {$\frac{\barvar{M}}{k\barvar{P}}$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Puntos de corte de la Curva LM:
+\begin{itemize}
+    \item Si $Y = 0$: $r = -\frac{\barvar{M}}{h\barvar{P}}$ (negativo).
+    \item Si $r = 0$: $Y = \frac{\barvar{M}}{k\barvar{P}}$.
+\end{itemize}
+
+% ============================================================
+\section{Equilibrio en el Mercado de Bienes y Mercado del Dinero}
+% ============================================================
+
+Tenemos dos ecuaciones y dos incógnitas ($Y$, $r$):
+
+\begin{align}
+    \text{Curva IS:} \quad &Y = \alpha_m(\barvar{A}_0 - b \cdot r) \tag{Curva IS} \\[6pt]
+    \text{Curva LM:} \quad &r = \frac{1}{h}\left(k \cdot Y - \frac{\barvar{M}}{\barvar{P}}\right) \tag{Curva LM}
+\end{align}
+
+\subsection{Derivación de la Curva IS en función de $r$}
+
+Primero ponemos la Curva IS en función de la tasa de interés ($r$):
+\begin{align}
+    Y &= \frac{\barvar{A}_0 - b \cdot r}{1 - c(1-t)} \notag \\
+    (1 - c(1-t))Y &= \barvar{A}_0 - b \cdot r \notag \\
+    b \cdot r &= \barvar{A}_0 - (1 - c(1-t))Y \notag
+\end{align}
+
+\begin{resultadobox}[Curva IS en función de $r$]
+\begin{equation}
+    r = \frac{\barvar{A}_0}{b} - \frac{Y}{\alpha_m \cdot b} \tag{5}
+\end{equation}
+\end{resultadobox}
+
+Y la Curva LM:
+\begin{resultadobox}[Curva LM]
+\begin{equation}
+    r = \frac{k \cdot Y}{h} - \frac{\barvar{M}}{h\barvar{P}} \tag{6}
+\end{equation}
+\end{resultadobox}
+
+\subsection{Producción de Equilibrio ($Y^*$)}
+
+Igualamos (5) y (6), $r = r$:
+\[
+\frac{\barvar{A}_0}{b} - \frac{Y}{\alpha_m b} = \frac{k \cdot Y}{h} - \frac{\barvar{M}}{h\barvar{P}}
+\]
+
+Despejamos $Y$:
+\[
+\frac{k \cdot Y}{h} + \frac{Y}{\alpha_m b} = \frac{\barvar{A}_0}{b} + \frac{\barvar{M}}{h\barvar{P}}
+\]
+
+\[
+Y\left(\frac{k}{h} + \frac{1}{\alpha_m b}\right) = \frac{h\barvar{P}\barvar{A}_0 + b\barvar{M}}{bh\barvar{P}}
+\]
+
+\[
+Y\left(\frac{\alpha_m b k + h}{h \alpha_m b}\right) = \frac{h\barvar{P}\barvar{A}_0 + b\barvar{M}}{bh\barvar{P}}
+\]
+
+Simplificando y definiendo:
+\[
+\gamma = \frac{\alpha_m}{1 + \dfrac{kb\alpha_m}{h}}
+\]
+
+\begin{resultadobox}[Producción de Equilibrio IS-LM]
+\begin{equation}
+    Y^* = \gamma \cdot \barvar{A}_0 + \gamma \cdot \frac{b}{h} \cdot \frac{\barvar{M}}{\barvar{P}} \tag{7}
+\end{equation}
+\end{resultadobox}
+
+Este resultado es equivalente a la ecuación (8a) de la página 243 del Dornbusch:
+\[
+Y = \gamma \barvar{A} + \gamma \frac{b}{h}\frac{\barvar{M}}{\barvar{P}}
+\]
+
+Donde:
+\begin{itemize}
+    \item $\barvar{A} = \barvar{A}_0$ (Gasto Autónomo).
+    \item $\gamma = \dfrac{\alpha_G}{1 + \frac{k \alpha_G b}{h}}$, con $\alpha_G = \alpha_m$ (multiplicador del gasto).
+\end{itemize}
+
+\subsection{Tasa de Interés de Equilibrio ($r^*$)}
+
+Para encontrar $r^*$, reemplazamos (7) en la Curva LM (6):
+\begin{align}
+    r &= \frac{k \cdot Y^*}{h} - \frac{\barvar{M}}{h\barvar{P}} \notag \\[6pt]
+    r &= \frac{k}{h}\left(\gamma \barvar{A}_0 + \gamma \frac{b}{h}\frac{\barvar{M}}{\barvar{P}}\right) - \frac{\barvar{M}}{h\barvar{P}} \notag
+\end{align}
+
+Desarrollando y simplificando:
+
+\begin{resultadobox}[Tasa de Interés de Equilibrio IS-LM]
+\begin{equation}
+    r^* = \gamma \cdot \frac{k}{h} \cdot \barvar{A}_0 - \gamma \cdot \frac{1}{h \alpha_m} \cdot \frac{\barvar{M}}{\barvar{P}} \tag{8}
+\end{equation}
+\end{resultadobox}
+
+Este resultado es equivalente a la ecuación (9a) de la página 244 del Dornbusch:
+\[
+i = \gamma \frac{k}{h}\barvar{A} - \gamma \frac{1}{h\alpha_G}\frac{\barvar{M}}{\barvar{P}}
+\]
+donde $i = r$ (en este modelo sin inflación, la tasa nominal es igual a la real).
+
+\end{document}
