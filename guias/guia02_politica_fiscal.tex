@@ -1,0 +1,493 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+\geometry{margin=2.5cm}
+
+% --- Colores (solo grises) ---
+\definecolor{grisoscuro}{HTML}{333333}
+\definecolor{grismedio}{HTML}{666666}
+\definecolor{grisclaro}{HTML}{E8E8E8}
+\definecolor{grislinea}{HTML}{999999}
+\definecolor{grisfondo}{HTML}{F5F5F5}
+
+% --- Definiciones ---
+\newcommand{\barvar}[1]{\overline{#1}}
+
+% --- Cajas personalizadas en gris ---
+\newtcolorbox{hintbox}[1][]{
+    colback=grisfondo,
+    colframe=grislinea,
+    title=#1,
+    fonttitle=\bfseries\color{grisoscuro},
+    coltitle=grisoscuro,
+    boxrule=0.5pt,
+    arc=2pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+
+\newtcolorbox{formulabox}[1][]{
+    colback=grisfondo,
+    colframe=grislinea,
+    title=#1,
+    fonttitle=\bfseries\color{grisoscuro},
+    coltitle=grisoscuro,
+    boxrule=0.8pt,
+    arc=2pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+
+% --- Hyperref ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=grismedio,
+    urlcolor=grismedio,
+}
+
+% --- Documento ---
+\title{\textbf{Gu\'{i}a de Ejercicios N$^\circ$2: Pol\'{i}tica Fiscal} \\ \large Modelo IS-LM \\ \normalsize Macroeconom\'{i}a II}
+\author{Universidad Cat\'{o}lica del Norte}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\vspace{-0.5cm}
+\noindent\textcolor{grismedio}{\rule{\textwidth}{0.5pt}}
+\vspace{0.3cm}
+
+% ============================================================
+\section{Datos del Modelo}
+% ============================================================
+
+Considere una econom\'{i}a cerrada descrita por las siguientes ecuaciones:
+
+\begin{align}
+    C &= 250 + 0{,}6 \; (Y_d) \label{eq:consumo} \\[4pt]
+    I &= 100 - 10r \label{eq:inversion} \\[4pt]
+    \barvar{G} &= 100 \label{eq:gasto} \\[4pt]
+    \barvar{T} &= 50 \label{eq:impuesto} \\[4pt]
+    \left(\frac{M}{P}\right)^d &= 2Y - 40r \label{eq:demandadinero} \\[4pt]
+    \barvar{P} &= 2 \label{eq:precios} \\[4pt]
+    \barvar{M} &= 3.480 \label{eq:ofertamonetaria}
+\end{align}
+
+
+% ============================================================
+\section{Identificaci\'{o}n de Par\'{a}metros}
+% ============================================================
+
+Antes de resolver, identifique los par\'{a}metros del modelo comparando las ecuaciones del ejercicio con las f\'{o}rmulas algebraicas vistas en clases. \textbf{Complete las siguientes tablas.}
+
+\vspace{0.4cm}
+
+% --- Consumo ---
+\noindent\textbf{Funci\'{o}n de Consumo} \hfill \textcolor{grismedio}{\small (Nota de Clase 2, ec.\ 3)}
+
+\vspace{0.1cm}
+\noindent Forma algebraica de clases:
+\[
+    C = \barvar{C} + c \cdot Y_d
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \rowcolor{grisclaro}
+    \textbf{Valor en el ejercicio} & \textbf{Par\'{a}metro algebraico} & \textbf{Nombre} \\
+    \hline
+    & & Consumo Aut\'{o}nomo \\
+    \hline
+    & & Propensi\'{o}n Marginal a Consumir \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Inversi\'{o}n ---
+\noindent\textbf{Funci\'{o}n de Inversi\'{o}n} \hfill \textcolor{grismedio}{\small (Nota de Clase 5, Curva IS)}
+
+\vspace{0.1cm}
+\noindent Forma algebraica de clases:
+\[
+    I = \barvar{I} - b \cdot r
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \rowcolor{grisclaro}
+    \textbf{Valor en el ejercicio} & \textbf{Par\'{a}metro algebraico} & \textbf{Nombre} \\
+    \hline
+    & & Inversi\'{o}n Aut\'{o}noma \\
+    \hline
+    & & Sensibilidad de la inversi\'{o}n a $r$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Gobierno y Tributaci\'{o}n ---
+\noindent\textbf{Gasto de Gobierno y Tributaci\'{o}n} \hfill \textcolor{grismedio}{\small (Nota de Clase 2, ec.\ 7 y 8)}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \rowcolor{grisclaro}
+    \textbf{Valor en el ejercicio} & \textbf{Par\'{a}metro algebraico} & \textbf{Nombre} \\
+    \hline
+    & & Gasto de Gobierno (ex\'{o}geno) \\
+    \hline
+    & & Impuesto de suma fija (ex\'{o}geno) \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Demanda por Saldos Reales ---
+\noindent\textbf{Demanda por Saldos Reales} \hfill \textcolor{grismedio}{\small (Nota de Clase 5, ec.\ 1)}
+
+\vspace{0.1cm}
+\noindent Forma algebraica de clases:
+\[
+    \left(\frac{M}{P}\right)^d = k \cdot Y - h \cdot r
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \rowcolor{grisclaro}
+    \textbf{Valor en el ejercicio} & \textbf{Par\'{a}metro algebraico} & \textbf{Nombre} \\
+    \hline
+    & & Sensibilidad demanda de dinero a $Y$ \\
+    \hline
+    & & Sensibilidad demanda de dinero a $r$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Oferta Monetaria ---
+\noindent\textbf{Oferta Monetaria} \hfill \textcolor{grismedio}{\small (Nota de Clase 5, ec.\ 2)}
+
+\vspace{0.1cm}
+\noindent Forma algebraica de clases:
+\[
+    \left(\frac{M}{P}\right)^o = \frac{\barvar{M}}{\barvar{P}}
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{5cm}|}
+    \hline
+    \rowcolor{grisclaro}
+    \textbf{Valor en el ejercicio} & \textbf{Par\'{a}metro algebraico} & \textbf{Nombre} \\
+    \hline
+    & & Oferta monetaria nominal \\
+    \hline
+    & & Nivel de precios \\
+    \hline
+    & & Oferta monetaria real $= \barvar{M}/\barvar{P}$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Recordatorio de notaci\'{o}n ---
+\begin{hintbox}[Recuerde la notaci\'{o}n de clases (Nota de Clase 2, Secci\'{o}n 1)]
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+    \item \textbf{Variables End\'{o}genas:} letra may\'{u}scula ($Y$, $C$, $DA$). Determinadas \emph{dentro} del modelo.
+    \item \textbf{Variables Ex\'{o}genas:} letra may\'{u}scula con barra ($\barvar{G}$, $\barvar{T}$, $\barvar{I}$, $\barvar{M}$). Determinadas \emph{fuera} del modelo.
+    \item \textbf{Par\'{a}metros:} letra min\'{u}scula ($c$, $b$, $k$, $h$). Valores fijos.
+    \item \textbf{Nota:} En este ejercicio, $\barvar{T}$ es de suma fija (no hay impuesto a la renta $t$).
+\end{itemize}
+\end{hintbox}
+
+
+% ============================================================
+\section{Preguntas}
+% ============================================================
+
+% ------------------------------------------------------------
+\subsection{Pregunta a)}
+% ------------------------------------------------------------
+
+\noindent Obtenga las curvas IS y LM. ?`Cu\'{a}l ser\'{a} la renta y el tipo de inter\'{e}s de equilibrio? Grafique.
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Curva IS (Mercado de Bienes y Servicios)]
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+    \item Construya la \textbf{Funci\'{o}n de Demanda Agregada} (NC2, ec.\ 9):
+    \[
+        DA = C + I + G = \barvar{C} + c(Y - \barvar{T}) + \barvar{I} - b \cdot r + \barvar{G}
+    \]
+    Simplifique hasta obtener:
+    \[
+        DA = \barvar{A}_0 - b \cdot r + c \cdot Y
+    \]
+    donde $\barvar{A}_0$ agrupa todos los t\'{e}rminos aut\'{o}nomos (constantes).
+
+    \item Aplique la \textbf{condici\'{o}n de equilibrio} $DA = Y$ (NC2, ec.\ 1) y despeje $r$ en funci\'{o}n de $Y$ para obtener la \textbf{Curva IS}.
+
+    \item La forma general de la Curva IS en funci\'{o}n de $r$ es (NC5, ec.\ 5):
+    \begin{equation*}
+    \boxed{\; r = \frac{\barvar{A}_0}{b} - \frac{Y}{\alpha_m \cdot b} \;}
+    \end{equation*}
+    donde $\alpha_m = \dfrac{1}{1 - c}$ es el multiplicador del gasto (NC3, ec.\ 3).
+\end{enumerate}
+\end{hintbox}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Curva LM (Mercado del Dinero)]
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+    \item Iguale la oferta monetaria real con la demanda por saldos reales (NC5, ec.\ 3):
+    \[
+        \left(\frac{M}{P}\right)^o = \left(\frac{M}{P}\right)^d \quad \Longrightarrow \quad \frac{\barvar{M}}{\barvar{P}} = k \cdot Y - h \cdot r
+    \]
+    Reemplace $\barvar{M}/\barvar{P}$ y despeje $r$ en funci\'{o}n de $Y$.
+
+    \item La forma general de la Curva LM es (NC5, ec.\ 4 y 6):
+    \begin{equation*}
+    \boxed{\; r = \frac{k}{h} \cdot Y - \frac{\barvar{M}}{h \cdot \barvar{P}} \;}
+    \end{equation*}
+\end{enumerate}
+\end{hintbox}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Equilibrio IS-LM]
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+    \item Iguale $IS = LM$ (ambas expresadas como $r = f(Y)$).
+    \item Despeje $Y^*$ (producci\'{o}n de equilibrio).
+    \item Reemplace $Y^*$ en la IS o la LM para obtener $r^*$.
+
+    \item F\'{o}rmulas generales del equilibrio (NC5, ec.\ 7 y 8):
+    \begin{align*}
+        Y^* &= \gamma \cdot \barvar{A}_0 + \gamma \cdot \frac{b}{h} \cdot \frac{\barvar{M}}{\barvar{P}} \\[6pt]
+        r^* &= \gamma \cdot \frac{k}{h} \cdot \barvar{A}_0 - \gamma \cdot \frac{1}{h \cdot \alpha_m} \cdot \frac{\barvar{M}}{\barvar{P}}
+    \end{align*}
+    donde $\;\gamma = \dfrac{\alpha_m}{1 + \frac{k \cdot b \cdot \alpha_m}{h}}$
+\end{enumerate}
+\end{hintbox}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Gr\'{a}fico (3 paneles)]
+Debe graficar 3 diagramas:
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+    \item \textbf{Modelo IS-LM} (eje vertical: $r$, eje horizontal: $Y$).
+    \begin{itemize}[leftmargin=1em]
+        \item Para graficar cada curva, use las ``tablitas'': reemplace $Y=0$ y $r=0$.
+        \item Marque el punto de equilibrio $E_1$ donde $IS = LM$.
+    \end{itemize}
+
+    \item \textbf{Mercado de Bienes --- Aspa Keynesiana} (eje vertical: $DA$, eje horizontal: $Y$).
+    \begin{itemize}[leftmargin=1em]
+        \item Reemplace $r^*$ en la funci\'{o}n $DA$ para obtener $DA = f(Y)$.
+        \item Incluya la l\'{i}nea de 45$^\circ$ ($DA = Y$).
+    \end{itemize}
+
+    \item \textbf{Mercado del Dinero} (eje vertical: $r$, eje horizontal: $M/P$).
+    \begin{itemize}[leftmargin=1em]
+        \item Reemplace $Y^*$ en $(M/P)^d$ para obtener $(M/P)^d = f(r)$.
+        \item La oferta monetaria real es una l\'{i}nea vertical en $\barvar{M}/\barvar{P}$.
+    \end{itemize}
+\end{enumerate}
+\end{hintbox}
+
+\newpage
+
+% ------------------------------------------------------------
+\subsection{Pregunta b)}
+% ------------------------------------------------------------
+
+\noindent ?`Cu\'{a}l ser\'{a} el desplazamiento de la IS ante un incremento del gasto p\'{u}blico de 20? Grafique y explique.
+
+\vspace{0.2cm}
+\noindent \textit{Es decir, el gasto p\'{u}blico pasa de $\barvar{G} = 100$ a $\barvar{G}' = 120$ \;(aumento de $\Delta \barvar{G} = 20$).}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Nueva Curva IS$'$]
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+    \item Reconstruya la funci\'{o}n de Demanda Agregada con el nuevo $\barvar{G}' = 120$. El nuevo gasto aut\'{o}nomo ser\'{a}:
+    \[
+        \barvar{A}_0' = \barvar{A}_0 + \Delta \barvar{G}
+    \]
+
+    \item Aplique nuevamente $DA' = Y$ para obtener la nueva \textbf{Curva IS$'$}.
+
+    \item Note que solo cambia el \textbf{intercepto} de la IS, NO la pendiente. La IS se desplaza de forma \textbf{paralela hacia la derecha}.
+
+    \item Iguale $IS' = LM$ (la LM no cambia) para encontrar el nuevo $Y^{*\prime}$ y $r^{*\prime}$.
+\end{enumerate}
+\end{hintbox}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- An\'{a}lisis en 3 Momentos (para explicar)]
+\textbf{Momento 1: Mercado de Bienes (Aspa Keynesiana)}
+\[
+    \uparrow \barvar{G} \;\rightarrow\; \uparrow DA \;\rightarrow\; \uparrow Y \qquad \text{(a la tasa de inter\'{e}s inicial } r^* \text{)}
+\]
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item Reemplace $r^*$ (del equilibrio inicial) en la nueva $DA'$ para graficar.
+    \item Encuentre el $Y$ de equilibrio parcial (solo mercado de bienes). Este es el \textbf{punto B} en el gr\'{a}fico IS-LM (sobre la IS$'$, con $r$ inicial).
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Momento 2: Mercado del Dinero}
+\[
+    \uparrow Y \;\rightarrow\; \uparrow \left(\frac{M}{P}\right)^d \;\rightarrow\; \uparrow r
+\]
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item Reemplace el nuevo $Y^{*\prime}$ (equilibrio final) en $(M/P)^d$ para graficar.
+    \item Se observa un desplazamiento de la demanda de dinero hacia la derecha.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Momento 3: Mercado de Bienes (efecto crowding-out)}
+\[
+    \uparrow r \;\rightarrow\; \downarrow I \;\rightarrow\; \downarrow DA \;\rightarrow\; \downarrow Y
+\]
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item Reemplace la nueva $r^{*\prime}$ (equilibrio final) en $DA'$ para obtener $DA''$.
+    \item Este es el paso de B a C: el alza de $r$ reduce parcialmente el efecto expansivo.
+    \item El $Y$ final (punto C) es \textbf{menor} que el $Y$ del momento 1 (punto B), pero \textbf{mayor} que el $Y$ inicial (punto A).
+\end{itemize}
+\end{hintbox}
+
+\vspace{0.4cm}
+
+\begin{hintbox}[Hint -- Gr\'{a}fico]
+En el gr\'{a}fico IS-LM debe mostrar 3 puntos:
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item \textbf{A:} Equilibrio inicial $(Y^*, r^*)$
+    \item \textbf{B:} Equilibrio parcial sobre IS$'$ con $r^*$ inicial (solo mercado de bienes)
+    \item \textbf{C:} Nuevo equilibrio general $(Y^{*\prime}, r^{*\prime})$
+\end{itemize}
+La transici\'{o}n es: $A \rightarrow B$ (expansi\'{o}n fiscal) $\rightarrow C$ (ajuste monetario).
+
+\vspace{0.3cm}
+En el \textbf{Aspa Keynesiana} debe mostrar 3 curvas $DA$:
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item $DA$ \;(original, con $r^*$)
+    \item $DA'$ \;(nuevo $\barvar{G}$, con $r^*$ inicial $\rightarrow$ punto B)
+    \item $DA''$ \;(nuevo $\barvar{G}$, con $r^{*\prime}$ final $\rightarrow$ punto C)
+\end{itemize}
+
+\vspace{0.3cm}
+En el \textbf{Mercado del Dinero}:
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item $(M/P)^d$ \;original (con $Y^*$)
+    \item $(M/P)^{d\prime}$ \;nueva (con $Y^{*\prime}$ final)
+    \item Oferta $(M/P)^o$ fija como l\'{i}nea vertical.
+\end{itemize}
+\end{hintbox}
+
+
+% ============================================================
+\newpage
+\section{Formulario Resumen}
+% ============================================================
+
+\noindent\textit{\small Las siguientes f\'{o}rmulas provienen de las Notas de Clase 2, 3 y 5.}
+
+\vspace{0.4cm}
+
+\begin{formulabox}[Mercado de Bienes y Servicios]
+
+\textbf{Demanda Agregada} \hfill \textcolor{grismedio}{\small NC2, ec.\ 2 y 9}
+\[
+    DA = C + I + G = \barvar{A}_0 - b \cdot r + c \cdot Y
+\]
+
+\textbf{Gasto Aut\'{o}nomo} (con $\barvar{T}$ de suma fija) \hfill \textcolor{grismedio}{\small NC2, ec.\ 9}
+\[
+    \barvar{A}_0 = \barvar{C} - c \cdot \barvar{T} + \barvar{I} + \barvar{G}
+\]
+
+\textbf{Condici\'{o}n de Equilibrio} \hfill \textcolor{grismedio}{\small NC2, ec.\ 1}
+\[
+    DA = Y
+\]
+
+\textbf{Multiplicador del Gasto} \hfill \textcolor{grismedio}{\small NC3, ec.\ 3}
+\[
+    \alpha_m = \frac{1}{1 - c}
+\]
+
+\textbf{Curva IS} (en funci\'{o}n de $r$) \hfill \textcolor{grismedio}{\small NC5, ec.\ 5}
+\[
+    r = \frac{\barvar{A}_0}{b} - \frac{Y}{\alpha_m \cdot b}
+\]
+
+\end{formulabox}
+
+\vspace{0.4cm}
+
+\begin{formulabox}[Mercado del Dinero]
+
+\textbf{Demanda por Saldos Reales} \hfill \textcolor{grismedio}{\small NC5, ec.\ 1}
+\[
+    \left(\frac{M}{P}\right)^d = k \cdot Y - h \cdot r
+\]
+
+\textbf{Condici\'{o}n de Equilibrio} \hfill \textcolor{grismedio}{\small NC5, ec.\ 3}
+\[
+    \left(\frac{M}{P}\right)^o = \left(\frac{M}{P}\right)^d
+\]
+
+\textbf{Curva LM} (en funci\'{o}n de $r$) \hfill \textcolor{grismedio}{\small NC5, ec.\ 6}
+\[
+    r = \frac{k}{h} \cdot Y - \frac{\barvar{M}}{h \cdot \barvar{P}}
+\]
+
+\end{formulabox}
+
+\vspace{0.4cm}
+
+\begin{formulabox}[Equilibrio IS-LM]
+
+\textbf{Producci\'{o}n de Equilibrio} \hfill \textcolor{grismedio}{\small NC5, ec.\ 7}
+\[
+    Y^* = \gamma \cdot \barvar{A}_0 + \gamma \cdot \frac{b}{h} \cdot \frac{\barvar{M}}{\barvar{P}}
+\]
+
+\textbf{Tasa de Inter\'{e}s de Equilibrio} \hfill \textcolor{grismedio}{\small NC5, ec.\ 8}
+\[
+    r^* = \gamma \cdot \frac{k}{h} \cdot \barvar{A}_0 - \gamma \cdot \frac{1}{h \cdot \alpha_m} \cdot \frac{\barvar{M}}{\barvar{P}}
+\]
+
+\textbf{Multiplicador IS-LM} \hfill \textcolor{grismedio}{\small NC5, p.\ 6}
+\[
+    \gamma = \frac{\alpha_m}{1 + \dfrac{k \cdot b \cdot \alpha_m}{h}}
+\]
+
+\end{formulabox}
+
+\end{document}
